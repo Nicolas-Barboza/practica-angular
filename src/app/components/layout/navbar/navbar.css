@@ -1,0 +1,23 @@
+.custom-navbar {
+  background: rgba(8, 9, 13, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.navbar-brand {
+  letter-spacing: -0.5px;
+}
+
+.navbar-brand span {
+  color: #ff4d6d;
+}
+
+.nav-link {
+  color: rgba(255, 255, 255, 0.75);
+  font-weight: 500;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: #ff4d6d;
+}
