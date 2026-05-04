@@ -81,8 +81,9 @@
   transform: scaleX(1);
 }
 
-.navbar-shell__link.disabled {
+.navbar-shell__link--disabled {
   opacity: 0.45;
+  cursor: not-allowed;
 }
 
 @media (max-width: 61.9375rem) {
