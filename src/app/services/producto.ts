@@ -19,7 +19,7 @@ export class ProductoService {
       'Notebook ASUS',
       '16GB RAM - SSD 512GB',
       450000,
-      'https://images.unsplash.com/photo-1698512475067-74ed7c956c8d?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400&q=70&auto=format',
+      'assets/img/productos/notebook-asus.jpg',
       15
     )
   );
@@ -29,7 +29,7 @@ export class ProductoService {
       'Monitor LG',
       '24 pulgadas Full HD',
       180000,
-      'https://images.unsplash.com/photo-1547658718-1cdaa0852790?q=80&w=464&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400&q=70&auto=format',
+      'assets/img/productos/monitor.jpg',
       12
     )
   );
@@ -39,7 +39,7 @@ export class ProductoService {
       'Teclado Mecánico',
       'RGB gamer',
       95000,
-      'https://images.unsplash.com/photo-1595225476474-87563907a212?w=400&q=70&auto=format',
+      'assets/img/productos/teclado.jpg',
       20
     )
   );
@@ -49,7 +49,7 @@ export class ProductoService {
       'Mouse Logitech',
       'Inalámbrico',
       45000,
-      'https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?w=400&q=70&auto=format',
+      'assets/img/productos/mouse.jpg',
       25
     )
   );
@@ -59,7 +59,7 @@ export class ProductoService {
       'Auriculares HyperX',
       'Sonido envolvente 7.1',
       120000,
-      'https://images.unsplash.com/photo-1566055972289-c52022ae23b7?q=80&w=1172&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400&q=70&auto=format',
+      'assets/img/productos/auricular.jpg',
       18
     )
   );
@@ -69,7 +69,7 @@ export class ProductoService {
       'Silla Gamer',
       'Ergonómica reclinable',
       320000,
-      'https://images.unsplash.com/photo-1670946839270-cc4febd43b09?q=80&w=688&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?w=400&q=70&auto=format',
+      'assets/img/productos/silla-gamer.jpg',
       10
     )
   );
@@ -79,7 +79,7 @@ export class ProductoService {
       'Tablet Samsung',
       '64GB - Pantalla 10"',
       210000,
-      'https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400&q=70&auto=format',
+      'assets/img/productos/tablet.jpg',
       14
     )
   );
@@ -89,7 +89,7 @@ export class ProductoService {
       'Smartphone Xiaomi',
       '128GB - 6GB RAM',
       250000,
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=400&q=70&auto=format',
+      'assets/img/productos/smartphone.jpg',
       22
     )
   );

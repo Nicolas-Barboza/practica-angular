@@ -15,7 +15,7 @@ export class EventoService {
       new Evento(
         'Yoga Sunset',
         'Relajación al atardecer frente al mar',
-        'https://images.unsplash.com/photo-1552196563-55cd4e45efb3'
+        'assets/img/eventos/yoga.jpg'
       )
     );
 
@@ -23,7 +23,7 @@ export class EventoService {
       new Evento(
         'Tech Night',
         'Charlas de programación y networking',
-        'https://images.unsplash.com/photo-1518770660439-4636190af475'
+        'assets/img/eventos/tech.jpg'
       )
     );
 
@@ -31,7 +31,7 @@ export class EventoService {
       new Evento(
         'Music Fest',
         'Festival en vivo con bandas locales',
-        'https://images.unsplash.com/photo-1507874457470-272b3c8d8ee2'
+        'assets/img/eventos/music.jpg'
       )
     );
 
@@ -39,7 +39,7 @@ export class EventoService {
       new Evento(
         'Fitness Bootcamp',
         'Entrenamiento intensivo al aire libre',
-        'https://images.unsplash.com/photo-1554284126-aa88f22d8b74'
+        'assets/img/eventos/fitnetss.jpg'
       )
     );
 
@@ -47,7 +47,7 @@ export class EventoService {
       new Evento(
         'Gaming Arena',
         'Competencias de videojuegos',
-        'https://images.unsplash.com/photo-1542751371-adc38448a05e'
+        'assets/img/eventos/gaming.jpg'
       )
     );
 
@@ -55,7 +55,7 @@ export class EventoService {
       new Evento(
         'Startup Meetup',
         'Encuentro de emprendedores',
-        'https://images.unsplash.com/photo-1556761175-4b46a572b786'
+        'assets/img/eventos/startup.jpg'
       )
     );
 
@@ -63,7 +63,7 @@ export class EventoService {
       new Evento(
         'Food Truck Night',
         'Comida urbana y música',
-        'https://images.unsplash.com/photo-1504674900247-0877df9cc836'
+        'assets/img/eventos/food.jpg'
       )
     );
   }

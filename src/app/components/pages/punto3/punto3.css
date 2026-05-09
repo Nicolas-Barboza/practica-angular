@@ -1,0 +1,264 @@
+.memory-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(255, 167, 38, 0.24), transparent 28%),
+    radial-gradient(circle at top right, rgba(0, 200, 255, 0.18), transparent 24%),
+    linear-gradient(180deg, #07111f 0%, #10243d 48%, #08101a 100%);
+  color: #f4f7fb;
+}
+
+.memory-shell {
+  max-width: 1080px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  background: rgba(7, 17, 31, 0.72);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.35);
+}
+
+.memory-hero {
+  margin-bottom: 2rem;
+}
+
+.memory-eyebrow {
+  display: inline-block;
+  margin-bottom: 0.85rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #9ed8ff;
+}
+
+.memory-title {
+  margin-bottom: 0.75rem;
+  font-size: clamp(2rem, 4vw, 3.35rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.memory-subtitle {
+  max-width: 640px;
+  margin: 0 auto;
+  color: rgba(244, 247, 251, 0.76);
+  font-size: 1.05rem;
+}
+
+.memory-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.memory-actions {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.memory-btn {
+  min-width: 140px;
+  padding: 0.85rem 1.4rem;
+  border: 0;
+  border-radius: 999px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #0b1320;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.memory-btn:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.03);
+}
+
+.memory-btn--start {
+  background: linear-gradient(135deg, #ffd166, #ff9f1c);
+  box-shadow: 0 14px 24px rgba(255, 159, 28, 0.3);
+}
+
+.memory-btn--reset {
+  background: linear-gradient(135deg, #8ecae6, #3a86ff);
+  box-shadow: 0 14px 24px rgba(58, 134, 255, 0.28);
+}
+
+.memory-stats {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.memory-stat {
+  min-width: 132px;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.memory-stat__label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: rgba(244, 247, 251, 0.72);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.memory-stat__value {
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.memory-message {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.2rem;
+  border-radius: 18px;
+  border: 1px solid transparent;
+  font-weight: 600;
+  text-align: center;
+}
+
+.memory-message--info {
+  background: rgba(74, 144, 226, 0.14);
+  border-color: rgba(128, 190, 255, 0.26);
+  color: #cfe8ff;
+}
+
+.memory-message--success {
+  background: rgba(95, 214, 160, 0.14);
+  border-color: rgba(95, 214, 160, 0.24);
+  color: #d6ffe9;
+}
+
+.memory-message--danger {
+  background: rgba(255, 107, 107, 0.14);
+  border-color: rgba(255, 129, 129, 0.24);
+  color: #ffdede;
+}
+
+.memory-grid {
+  margin-top: 0.5rem;
+}
+
+.memory-card {
+  position: relative;
+  height: 148px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    #0d1a2b;
+  box-shadow:
+    0 20px 35px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-6px) rotate(-1deg);
+  border-color: rgba(255, 209, 102, 0.5);
+  box-shadow:
+    0 26px 40px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(255, 209, 102, 0.16);
+}
+
+.memory-card--visible {
+  border-color: rgba(158, 216, 255, 0.42);
+}
+
+.memory-card--matched {
+  border-color: rgba(95, 214, 160, 0.45);
+  box-shadow:
+    0 22px 38px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(95, 214, 160, 0.2);
+}
+
+.memory-card--locked {
+  cursor: default;
+  opacity: 0.82;
+}
+
+.memory-img,
+.card-back {
+  width: 100%;
+  height: 100%;
+}
+
+.memory-img {
+  display: block;
+  object-fit: cover;
+}
+
+.card-back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(255, 255, 255, 0.26), transparent 24%),
+    linear-gradient(135deg, #ff7b54 0%, #ffb703 52%, #3a86ff 100%);
+}
+
+.card-back span {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: white;
+  font-size: 2.15rem;
+  font-weight: 800;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 767.98px) {
+  .memory-shell {
+    padding: 1.35rem;
+    border-radius: 24px;
+  }
+
+  .memory-toolbar {
+    align-items: stretch;
+  }
+
+  .memory-actions,
+  .memory-stats {
+    width: 100%;
+  }
+
+  .memory-actions {
+    justify-content: center;
+  }
+
+  .memory-actions .memory-btn {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .memory-stats {
+    justify-content: space-between;
+  }
+
+  .memory-stat {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .memory-card {
+    height: 124px;
+    border-radius: 20px;
+  }
+}
