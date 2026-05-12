@@ -1,59 +1,90 @@
-# PracticaAngular
+# Practica Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Aplicacion web desarrollada con Angular 21 y Bootstrap para la materia Programacion y Servicios Web. El proyecto presenta una interfaz moderna, responsive y orientada a la practica de componentes, servicios, navegacion y manejo de estado dentro de una SPA.
 
-## Development server
+## Descripcion general
 
-To start a local development server, run:
+La aplicacion presenta tres ejercicios o secciones:
+
+1. `Punto 1`: carrusel de eventos con navegacion manual, imagen destacada y descripcion.
+2. `Punto 2`: catalogo de productos con carrito de compras, control de stock y calculo de total.
+3. `Punto 3`: juego de memoria con intentos limitados, cartas emparejadas y estados de victoria o derrota.
+
+## Tecnologias utilizadas
+
+- Angular 21
+- TypeScript
+- Bootstrap 5
+- HTML y CSS
+
+## Funcionalidades
+
+### Punto 1 - Carrusel de eventos
+
+- Muestra una coleccion de eventos cargados desde `EventoService`.
+- Permite avanzar y retroceder entre eventos.
+- Presenta cada evento con una estetica visual atractiva y dinamica.
+
+### Punto 2 - Tienda con carrito
+
+- Lista productos obtenidos desde `ProductoService`.
+- Permite agregar productos al carrito.
+- Actualiza cantidades desde un modal.
+- Descuenta y repone stock en tiempo real.
+- Calcula el total de la compra de forma automatica.
+
+### Punto 3 - Juego de memoria
+
+- Genera un tablero con pares de cartas mezcladas aleatoriamente.
+- Controla intentos disponibles.
+- Detecta aciertos y errores.
+- Informa si el jugador gana o pierde.
+
+## Instalacion y ejecucion
+
+1. Instalar dependencias:
+
+```bash
+npm install
+```
+
+2. Levantar el servidor de desarrollo:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+3. Abrir en el navegador:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Scripts disponibles
 
-```bash
-ng generate --help
-```
+- `npm start`: inicia la aplicacion en modo desarrollo.
+- `npm run build`: genera el build de produccion.
+- `npm run watch`: recompila en modo desarrollo ante cambios.
+- `npm test`: ejecuta las pruebas unitarias.
 
-## Building
+## Capturas del proyecto
 
-To build the project run:
+En esta seccion se pueden incorporar capturas de pantalla de la aplicacion para mostrar visualmente cada una de las vistas desarrolladas.
 
-```bash
-ng build
-```
+### Punto 1
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Captura correspondiente al carrusel de eventos.
 
-## Running unit tests
+### Punto 2
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Captura correspondiente a la tienda con carrito de compras.
 
-```bash
-ng test
-```
+### Punto 3
 
-## Running end-to-end tests
+Captura correspondiente al juego de memoria.
 
-For end-to-end (e2e) testing, run:
+## Notas
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- El proyecto usa componentes y servicios separados para mantener la logica organizada.
+- Bootstrap se carga desde `angular.json`.
+- La aplicacion fue pensada para combinar funcionalidad, navegacion y una presentacion visual clara.

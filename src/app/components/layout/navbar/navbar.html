@@ -7,19 +7,25 @@
     <button
       class="navbar-toggler navbar-shell__toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mainNavbar">
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="mainNavbar"
+      aria-label="Abrir o cerrar navegacion"
+      (click)="toggleMenu()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse navbar-shell__collapse" id="mainNavbar">
+    <div
+      class="collapse navbar-collapse navbar-shell__collapse"
+      [class.show]="isMenuOpen"
+      id="mainNavbar">
       <ul class="navbar-nav ms-auto navbar-shell__nav">
         <li class="nav-item">
           <a
             class="nav-link navbar-shell__link"
             routerLink="/punto1"
             routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 1
           </a>
         </li>
@@ -28,7 +34,8 @@
             class="nav-link navbar-shell__link"
             routerLink="/punto2"
             routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 2
           </a>
         </li>
@@ -37,8 +44,19 @@
             class="nav-link navbar-shell__link"
             routerLink="/punto3"
             routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }">
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 3
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link navbar-shell__link"
+            routerLink="/punto4"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
+            Punto 4
           </a>
         </li>
       </ul>

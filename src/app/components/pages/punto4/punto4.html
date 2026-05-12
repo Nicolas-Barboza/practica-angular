@@ -1,0 +1,281 @@
+<div class="punto4-shell">
+  <div class="container py-5 text-white">
+    <section class="hero-panel mb-4">
+      <div>
+        <h1 class="hero-title mt-3 mb-2">Inscripción a cursos</h1>
+        <p class="hero-text mb-0">
+          Registrá alumnos, aplicá descuentos por categoría y controlá el total
+          acumulado desde un solo panel.
+        </p>
+      </div>
+
+      <div class="hero-highlight">
+        <span class="hero-highlight-label">Cursos disponibles</span>
+        <strong>{{ cursos.length }}</strong>
+      </div>
+    </section>
+
+    <div class="row g-4 align-items-start">
+      <div class="col-lg-5">
+        <div class="form-card">
+          <div class="table-header">
+            <h2 class="section-title mb-0">Formulario</h2>
+          </div>
+
+          <form #formInscripcion="ngForm" class="form-layout">
+            <div class="field-group">
+              <label for="dni" class="form-label">DNI</label>
+
+              <input
+                type="text"
+                id="dni"
+                name="dni"
+                class="form-control"
+                placeholder="Ej: 40123456"
+                required
+                minlength="7"
+                maxlength="8"
+                pattern="[0-9]*"
+                [(ngModel)]="inscripcion.dni"
+                #dniInput="ngModel">
+
+              <div
+                *ngIf="dniInput.invalid && (dniInput.dirty || dniInput.touched)"
+                class="alert alert-danger mt-2">
+
+                <div *ngIf="dniInput.errors?.['required']">
+                  El DNI es requerido.
+                </div>
+
+                <div *ngIf="dniInput.errors?.['minlength']">
+                  El DNI debe tener al menos 7 números.
+                </div>
+
+                <div *ngIf="dniInput.errors?.['pattern']">
+                  El DNI solo debe contener números.
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="email" class="form-label">Email</label>
+
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                placeholder="alumno@email.com"
+                required
+                email
+                [(ngModel)]="inscripcion.email"
+                #emailInput="ngModel">
+
+              <div
+                *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+                class="alert alert-danger mt-2">
+
+                <div *ngIf="emailInput.errors?.['required']">
+                  El email es requerido.
+                </div>
+
+                <div *ngIf="emailInput.errors?.['email']">
+                  Debe ingresar un email válido.
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="curso" class="form-label">Curso</label>
+
+              <select
+                id="curso"
+                name="curso"
+                class="form-select"
+                required
+                [(ngModel)]="inscripcion.curso"
+                #cursoInput="ngModel"
+                (change)="seleccionarCurso()">
+
+                <option value="">Seleccione un curso</option>
+                <option *ngFor="let curso of cursos" [value]="curso.nombre">
+                  {{ curso.nombre }}
+                </option>
+              </select>
+
+              <div
+                *ngIf="cursoInput.invalid && (cursoInput.dirty || cursoInput.touched)"
+                class="alert alert-danger mt-2">
+
+                <div *ngIf="cursoInput.errors?.['required']">
+                  Debe seleccionar un curso.
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="precio" class="form-label">Precio del curso</label>
+
+              <input
+                type="number"
+                id="precio"
+                name="precio"
+                class="form-control"
+                readonly
+                [(ngModel)]="inscripcion.precio"
+                (input)="calcularPrecioFinal()">
+
+              <small class="field-hint">El precio se completa automáticamente según el curso elegido.</small>
+            </div>
+
+            <div class="field-group">
+              <label for="categoria" class="form-label">Categoría del alumno</label>
+
+              <select
+                id="categoria"
+                name="categoria"
+                class="form-select"
+                required
+                [(ngModel)]="inscripcion.categoriaAlumno"
+                #categoriaInput="ngModel"
+                (change)="calcularPrecioFinal()">
+
+                <option [ngValue]="0">Seleccione categoría</option>
+
+                <option
+                  *ngFor="let cat of categorias"
+                  [ngValue]="cat.id">
+                  {{ cat.nombre }} - {{ cat.descuento }}% descuento
+                </option>
+              </select>
+
+              <div
+                *ngIf="categoriaInput.invalid && (categoriaInput.dirty || categoriaInput.touched)"
+                class="alert alert-danger mt-2">
+
+                <div *ngIf="categoriaInput.errors?.['required']">
+                  Debe seleccionar una categoría.
+                </div>
+              </div>
+            </div>
+
+            <div class="field-group">
+              <label for="fecha" class="form-label">Fecha de inscripción</label>
+
+              <input
+                type="date"
+                id="fecha"
+                name="fecha"
+                class="form-control"
+                required
+                [(ngModel)]="inscripcion.fechaInscripcion"
+                #fechaInput="ngModel">
+
+              <div
+                *ngIf="fechaInput.invalid && (fechaInput.dirty || fechaInput.touched)"
+                class="alert alert-danger mt-2">
+
+                <div *ngIf="fechaInput.errors?.['required']">
+                  La fecha es requerida.
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="mostrarPrecioFinal" class="price-box">
+              <div>
+                <span class="price-label">Precio final</span>
+                <strong>{{ precioFinal | currency:'ARS':'symbol':'1.0-0' }}</strong>
+              </div>
+
+              <span class="price-badge">Descuento aplicado</span>
+            </div>
+
+            <button
+              type="button"
+              class="btn submit-btn w-100"
+              [disabled]="formInscripcion.invalid || !mostrarPrecioFinal"
+              (click)="registrar(formInscripcion)">
+              Registrar inscripción
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-lg-7">
+        <div class="summary-grid mb-4">
+          <div class="summary-card">
+            <span>Estudiantes</span>
+            <strong>{{ contarEstudiantes() }}</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Egresados</span>
+            <strong>{{ contarEgresados() }}</strong>
+          </div>
+
+          <div class="summary-card">
+            <span>Particulares</span>
+            <strong>{{ contarParticulares() }}</strong>
+          </div>
+
+          <div class="summary-card total">
+            <span>Total general</span>
+            <strong>{{ totalGeneral() | currency:'ARS':'symbol':'1.0-0' }}</strong>
+          </div>
+        </div>
+
+        <div class="table-card">
+          <div class="table-header">
+            <div>
+              <span class="section-kicker">Resumen</span>
+              <h3 class="section-title mb-1">Inscripciones registradas</h3>
+              <p class="section-text mb-0">Consultá rápidamente quién se inscribió y el monto final abonado.</p>
+            </div>
+
+            <div class="table-counter">
+              <span>Registros</span>
+              <strong>{{ inscripciones.length }}</strong>
+            </div>
+          </div>
+
+          <div *ngIf="inscripciones.length === 0" class="empty-state">
+            <strong>Todavía no hay inscripciones registradas.</strong>
+            <span>Completá el formulario para ver los registros en esta tabla.</span>
+          </div>
+
+          <div class="table-responsive" *ngIf="inscripciones.length > 0">
+            <table class="table enrollments-table align-middle mb-0">
+              <thead>
+                <tr>
+                  <th>DNI</th>
+                  <th>Email</th>
+                  <th>Curso</th>
+                  <th>Categoría</th>
+                  <th>Fecha</th>
+                  <th>Precio final</th>
+                  <th></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngFor="let ins of inscripciones; let i = index">
+                  <td>{{ ins.dni }}</td>
+                  <td>{{ ins.email }}</td>
+                  <td>{{ ins.curso }}</td>
+                  <td>{{ obtenerCategoriaTexto(ins.categoriaAlumno) }}</td>
+                  <td>{{ ins.fechaInscripcion | date:'dd/MM/yyyy' }}</td>
+                  <td class="price-cell">{{ ins.precioFinal | currency:'ARS':'symbol':'1.0-0' }}</td>
+                  <td>
+                    <button class="btn btn-sm delete-btn" (click)="eliminar(i)">
+                      Eliminar
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

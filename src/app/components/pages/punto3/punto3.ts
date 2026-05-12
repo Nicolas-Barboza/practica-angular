@@ -39,12 +39,12 @@ export class Punto3 {
   generarCartas(): void {
 
     const base = [
-      new Carta('A', 'assets/img/cartas/carta-1.jpg'),
-      new Carta('B', 'assets/img/cartas/carta-2.jpg'),
-      new Carta('C', 'assets/img/cartas/carta-3.jpg'),
-      new Carta('D', 'assets/img/cartas/carta-4.jpg'),
-      new Carta('E', 'assets/img/cartas/carta-5.jpg'),
-      new Carta('F', 'assets/img/cartas/carta-6.jpg')
+      new Carta('A', 'img/cartas/carta-1.jpg'),
+      new Carta('B', 'img/cartas/carta-2.jpg'),
+      new Carta('C', 'img/cartas/carta-3.jpg'),
+      new Carta('D', 'img/cartas/carta-4.jpg'),
+      new Carta('E', 'img/cartas/carta-5.jpg'),
+      new Carta('F', 'img/cartas/carta-6.jpg')
     ];
 
     this.cartas = [...base, ...base.map(c => new Carta(c.nombre, c.img))];

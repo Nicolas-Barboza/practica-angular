@@ -15,7 +15,7 @@ export class EventoService {
       new Evento(
         'Yoga Sunset',
         'Relajación al atardecer frente al mar',
-        'assets/img/eventos/yoga.jpg'
+        'img/eventos/yoga.jpg'
       )
     );
 
@@ -23,7 +23,7 @@ export class EventoService {
       new Evento(
         'Tech Night',
         'Charlas de programación y networking',
-        'assets/img/eventos/tech.jpg'
+        'img/eventos/tech.jpg'
       )
     );
 
@@ -31,7 +31,7 @@ export class EventoService {
       new Evento(
         'Music Fest',
         'Festival en vivo con bandas locales',
-        'assets/img/eventos/music.jpg'
+        'img/eventos/music.jpg'
       )
     );
 
@@ -39,7 +39,7 @@ export class EventoService {
       new Evento(
         'Fitness Bootcamp',
         'Entrenamiento intensivo al aire libre',
-        'assets/img/eventos/fitnetss.jpg'
+        'img/eventos/fitnetss.jpg'
       )
     );
 
@@ -47,7 +47,7 @@ export class EventoService {
       new Evento(
         'Gaming Arena',
         'Competencias de videojuegos',
-        'assets/img/eventos/gaming.jpg'
+        'img/eventos/gaming.jpg'
       )
     );
 
@@ -55,7 +55,7 @@ export class EventoService {
       new Evento(
         'Startup Meetup',
         'Encuentro de emprendedores',
-        'assets/img/eventos/startup.jpg'
+        'img/eventos/startup.jpg'
       )
     );
 
@@ -63,7 +63,7 @@ export class EventoService {
       new Evento(
         'Food Truck Night',
         'Comida urbana y música',
-        'assets/img/eventos/food.jpg'
+        'img/eventos/food.jpg'
       )
     );
   }

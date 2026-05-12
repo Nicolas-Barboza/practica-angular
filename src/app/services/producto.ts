@@ -19,7 +19,7 @@ export class ProductoService {
       'Notebook ASUS',
       '16GB RAM - SSD 512GB',
       450000,
-      'assets/img/productos/notebook-asus.jpg',
+      'img/productos/notebook-asus.jpg',
       15
     )
   );
@@ -29,7 +29,7 @@ export class ProductoService {
       'Monitor LG',
       '24 pulgadas Full HD',
       180000,
-      'assets/img/productos/monitor.jpg',
+      'img/productos/monitor.jpg',
       12
     )
   );
@@ -39,7 +39,7 @@ export class ProductoService {
       'Teclado Mecánico',
       'RGB gamer',
       95000,
-      'assets/img/productos/teclado.jpg',
+      'img/productos/teclado.jpg',
       20
     )
   );
@@ -49,7 +49,7 @@ export class ProductoService {
       'Mouse Logitech',
       'Inalámbrico',
       45000,
-      'assets/img/productos/mouse.jpg',
+      'img/productos/mouse.jpg',
       25
     )
   );
@@ -59,7 +59,7 @@ export class ProductoService {
       'Auriculares HyperX',
       'Sonido envolvente 7.1',
       120000,
-      'assets/img/productos/auricular.jpg',
+      'img/productos/auricular.jpg',
       18
     )
   );
@@ -69,7 +69,7 @@ export class ProductoService {
       'Silla Gamer',
       'Ergonómica reclinable',
       320000,
-      'assets/img/productos/silla-gamer.jpg',
+      'img/productos/silla-gamer.jpg',
       10
     )
   );
@@ -79,7 +79,7 @@ export class ProductoService {
       'Tablet Samsung',
       '64GB - Pantalla 10"',
       210000,
-      'assets/img/productos/tablet.jpg',
+      'img/productos/tablet.jpg',
       14
     )
   );
@@ -89,7 +89,7 @@ export class ProductoService {
       'Smartphone Xiaomi',
       '128GB - 6GB RAM',
       250000,
-      'assets/img/productos/smartphone.jpg',
+      'img/productos/smartphone.jpg',
       22
     )
   );

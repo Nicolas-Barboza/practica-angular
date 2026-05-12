@@ -106,3 +106,25 @@ a {
   outline: 0.15rem solid hsla(191, 62%, 58%, 0.8);
   outline-offset: 0.2rem;
 }
+
+.shop-showcase__kicker,
+.shop-summary__label,
+.product-card__badge,
+.product-card__category,
+.cart-modal__eyebrow,
+.memory-stat__label,
+.hero-highlight-label,
+.section-kicker,
+.price-label,
+.enrollments-table thead th {
+  text-transform: uppercase;
+}
+
+.product-card__badge,
+.cart-modal__eyebrow,
+.memory-stat__label,
+.hero-highlight-label,
+.section-kicker,
+.price-label {
+  font-weight: 700;
+}
