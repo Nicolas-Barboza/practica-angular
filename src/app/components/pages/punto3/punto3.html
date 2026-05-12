@@ -1,0 +1,70 @@
+<section class="memory-page">
+  <div class="container py-5">
+    <div class="memory-shell mx-auto">
+      <header class="memory-hero text-center">
+        <h2 class="memory-title">Juego de Memoria</h2>
+        <p class="memory-subtitle">
+          Encontrá todas las parejas antes de quedarte sin intentos.
+        </p>
+      </header>
+
+      <div class="memory-toolbar">
+        <div class="memory-actions">
+          <button class="btn memory-btn memory-btn--start" (click)="iniciar()">Iniciar</button>
+          <button class="btn memory-btn memory-btn--reset" (click)="reiniciar()">Reiniciar</button>
+        </div>
+
+        <div *ngIf="juegoIniciado" class="memory-stats">
+          <div class="memory-stat">
+            <span class="memory-stat__label">Intentos</span>
+            <strong class="memory-stat__value">{{ intentos }}</strong>
+          </div>
+          <div class="memory-stat">
+            <span class="memory-stat__label">Aciertos</span>
+            <strong class="memory-stat__value">{{ aciertos }}</strong>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="!juegoIniciado" class="memory-message memory-message--info">
+        Presioná iniciar para revelar el tablero.
+      </div>
+
+      <div *ngIf="victoria" class="memory-message memory-message--success">
+        ¡Ganaste! Encontraste todas las parejas.
+      </div>
+
+      <div *ngIf="derrota" class="memory-message memory-message--danger">
+        Se terminaron los intentos. Probá otra vez.
+      </div>
+
+      <div class="row justify-content-center g-3 memory-grid">
+        <div
+          class="col-4 col-sm-3 col-md-2"
+          *ngFor="let carta of cartas"
+          (click)="seleccionar(carta)">
+
+          <div
+            class="memory-card"
+            [class.memory-card--visible]="carta.descubierta || carta.encontrada"
+            [class.memory-card--matched]="carta.encontrada"
+            [class.memory-card--locked]="bloqueado && !carta.descubierta && !carta.encontrada">
+
+            <img
+              *ngIf="carta.descubierta || carta.encontrada"
+              [src]="carta.img"
+              [alt]="'Carta ' + carta.nombre"
+              class="memory-img">
+
+            <div
+              *ngIf="!carta.descubierta && !carta.encontrada"
+              class="card-back">
+              <span>?</span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

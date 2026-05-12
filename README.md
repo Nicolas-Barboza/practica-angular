@@ -1,59 +1,90 @@
-# PracticaAngular
+# Practica Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.9.
+Aplicacion web desarrollada con Angular 21 y Bootstrap para la materia Programacion y Servicios Web. El proyecto presenta una interfaz moderna, responsive y orientada a la practica de componentes, servicios, formularios, navegacion y manejo de estado dentro de una SPA.
 
-## Development server
+## Descripcion general
 
-To start a local development server, run:
+La aplicacion presenta cuatro ejercicios o secciones:
+
+1. `Punto 1`: carrusel de eventos con navegacion manual, imagen destacada y descripcion.
+2. `Punto 2`: catalogo de productos con carrito de compras, control de stock y calculo de total.
+3. `Punto 3`: juego de memoria con intentos limitados, cartas emparejadas y estados de victoria o derrota.
+4. `Punto 4`: panel de inscripcion a cursos con formulario validado, descuentos por categoria y resumen de registros.
+
+## Tecnologias utilizadas
+
+- Angular 21
+- TypeScript
+- Bootstrap 5
+- Bootstrap Icons
+- HTML y CSS
+
+## Funcionalidades
+
+### Punto 1 - Carrusel de eventos
+
+- Muestra una coleccion de eventos cargados desde `EventoService`.
+- Permite avanzar y retroceder entre eventos.
+- Presenta cada evento con una estetica visual atractiva y dinamica.
+
+### Punto 2 - Tienda con carrito
+
+- Lista productos obtenidos desde `ProductoService`.
+- Permite agregar productos al carrito.
+- Actualiza cantidades desde un modal.
+- Descuenta y repone stock en tiempo real.
+- Calcula el total de la compra de forma automatica.
+
+### Punto 3 - Juego de memoria
+
+- Genera un tablero con pares de cartas mezcladas aleatoriamente.
+- Controla intentos disponibles.
+- Detecta aciertos y errores.
+- Informa si el jugador gana o pierde.
+
+### Punto 4 - Inscripcion a cursos
+
+- Permite registrar alumnos mediante un formulario con validaciones.
+- Completa automaticamente el precio segun el curso seleccionado.
+- Calcula el precio final aplicando descuentos por categoria.
+- Muestra un resumen con cantidad de inscriptos por tipo de alumno.
+- Lista las inscripciones registradas y permite eliminarlas.
+- Calcula el total general acumulado de las inscripciones.
+
+## Instalacion y ejecucion
+
+1. Instalar dependencias:
+
+```bash
+npm install
+```
+
+2. Levantar el servidor de desarrollo:
 
 ```bash
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+3. Abrir en el navegador:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Scripts disponibles
 
-```bash
-ng generate --help
-```
+- `npm start`: inicia la aplicacion en modo desarrollo.
+- `npm run build`: genera el build de produccion.
+- `npm run watch`: recompila en modo desarrollo ante cambios.
+- `npm test`: ejecuta las pruebas unitarias.
 
-## Building
+## Capturas del proyecto
 
-To build the project run:
+![Preview mobile de AngularLab](public/img/preview-pages-mobile.png)
 
-```bash
-ng build
-```
+## Notas
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- El proyecto usa componentes y servicios separados para mantener la logica organizada.
+- Bootstrap se carga desde `angular.json`.
+- La navegacion principal permite acceder a los cuatro puntos desde una misma SPA.
+- La aplicacion fue pensada para combinar funcionalidad, navegacion y una presentacion visual clara.

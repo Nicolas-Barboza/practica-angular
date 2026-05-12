@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Cormorant+Garamond:wght@600;700&display=swap');
+
+/* ===== CAPA 1: VARIABLES GLOBALES ===== */
+:root {
+  --hue-primary: 12;
+  --color-primary: hsl(var(--hue-primary), 82%, 56%);
+  --color-primary-dark: hsl(var(--hue-primary), 82%, 46%);
+  --color-primary-soft: hsl(var(--hue-primary), 90%, 94%);
+  --color-secondary: hsl(191, 62%, 58%);
+  --color-surface: hsl(222, 30%, 12%);
+  --color-surface-soft: hsl(222, 24%, 18%);
+  --color-panel: hsla(0, 0%, 100%, 0.06);
+  --color-border: hsla(0, 0%, 100%, 0.12);
+  --color-text: hsl(30, 33%, 98%);
+  --color-muted: hsla(30, 33%, 98%, 0.7);
+  --color-muted-soft: hsla(30, 33%, 98%, 0.52);
+
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Cormorant Garamond', serif;
+
+  --fs-sm: clamp(0.875rem, 0.82rem + 0.24vw, 1rem);
+  --fs-base: clamp(1rem, 0.95rem + 0.3vw, 1.1rem);
+  --fs-lg: clamp(1.125rem, 1rem + 0.55vw, 1.5rem);
+  --fs-xl: clamp(1.8rem, 1.35rem + 2vw, 3.25rem);
+  --fs-2xl: clamp(2.6rem, 2rem + 3vw, 4.75rem);
+
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 5rem;
+
+  --shadow-sm: 0 0.75rem 2rem hsla(230, 35%, 4%, 0.16);
+  --shadow-md: 0 1.5rem 3.5rem hsla(230, 35%, 4%, 0.28);
+  --shadow-lg: 0 2rem 5rem hsla(230, 40%, 3%, 0.36);
+
+  --radius-md: 1rem;
+  --radius-lg: 1.75rem;
+  --radius-xl: 2.5rem;
+  --radius-pill: 999rem;
+
+  --transition-fast: 180ms ease;
+  --transition-normal: 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ===== CAPA 2: OVERRIDES DE BASE ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top left, hsla(12, 82%, 56%, 0.18), transparent 28%),
+    radial-gradient(circle at top right, hsla(191, 62%, 58%, 0.16), transparent 24%),
+    linear-gradient(180deg, hsl(225, 31%, 12%) 0%, hsl(225, 32%, 8%) 100%);
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+p {
+  margin-bottom: 0;
+}
+
+a {
+  color: inherit;
+}
+
+.btn {
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  transition:
+    transform var(--transition-fast),
+    box-shadow var(--transition-normal),
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+}
+
+.btn:hover {
+  transform: translateY(-0.125rem);
+}
+
+.btn:focus-visible,
+.navbar-toggler:focus-visible,
+.nav-link:focus-visible {
+  outline: 0.15rem solid hsla(191, 62%, 58%, 0.8);
+  outline-offset: 0.2rem;
+}
+
+.shop-showcase__kicker,
+.shop-summary__label,
+.product-card__badge,
+.product-card__category,
+.cart-modal__eyebrow,
+.memory-stat__label,
+.hero-highlight-label,
+.section-kicker,
+.price-label,
+.enrollments-table thead th {
+  text-transform: uppercase;
+}
+
+.product-card__badge,
+.cart-modal__eyebrow,
+.memory-stat__label,
+.hero-highlight-label,
+.section-kicker,
+.price-label {
+  font-weight: 700;
+}

@@ -1,0 +1,118 @@
+<section class="shop-showcase">
+  <div class="container">
+    <div class="shop-showcase__hero">
+      <div class="row align-items-center g-4 g-xl-5">
+        <div class="col-lg-7">
+          <p class="shop-showcase__kicker">Storefront interactivo</p>
+          <h1 class="shop-showcase__title">Armá tu setup con una experiencia de compra más clara y atractiva.</h1>
+          <p class="shop-showcase__lead">
+            Productos destacados, stock visible y un carrito compacto para mantener el flujo
+            de compra simple desde desktop y mobile.
+          </p>
+        </div>
+
+        <div class="col-lg-5">
+          <aside class="shop-summary">
+
+            <div class="shop-summary__item">
+              <span class="shop-summary__label">En carrito</span>
+              <strong class="shop-summary__value">{{ getCantidadCarrito() }}</strong>
+            </div>
+            <div class="shop-summary__item">
+              <span class="shop-summary__label">Total</span>
+              <strong class="shop-summary__value">$ {{ formatPrice(getTotal()) }}</strong>
+            </div>
+
+            <button class="btn shop-summary__button" data-bs-toggle="modal" data-bs-target="#carritoModal">
+              Ver carrito {{ carrito.length }}
+            </button>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-12 col-md-6 col-xl-4" *ngFor="let p of productos">
+        <article class="product-card h-100">
+          <div class="product-card__media">
+            <span class="product-card__badge">{{ p.stock > 0 ? 'Disponible' : 'Agotado' }}</span>
+            <img [src]="p.img" [alt]="p.nombre" class="product-card__image">
+          </div>
+
+          <div class="product-card__body">
+            <div class="product-card__topline">
+              <span class="product-card__category">Tecnología</span>
+              <span class="product-card__stock">Stock: {{ p.stock }}</span>
+            </div>
+
+            <h2 class="product-card__title">{{ p.nombre }}</h2>
+            <p class="product-card__description">{{ p.descripcion }}</p>
+
+            <div class="product-card__footer">
+              <div>
+                <p class="product-card__price">$ {{ formatPrice(p.precio) }}</p>
+                <p class="product-card__note">Precio final por unidad</p>
+              </div>
+
+              <button
+                class="btn product-card__button"
+                (click)="agregar(p)"
+                [disabled]="p.stock === 0">
+                {{ p.stock === 0 ? 'Sin stock' : 'Agregar' }}
+              </button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content cart-modal">
+      <div class="modal-header cart-modal__header">
+        <div>
+          <p class="cart-modal__eyebrow">Resumen de compra</p>
+          <h2 class="modal-title cart-modal__title" id="carritoModalLabel">Carrito de compras</h2>
+        </div>
+        <button class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+
+      <div class="modal-body cart-modal__body">
+        <div *ngIf="carrito.length === 0" class="cart-modal__empty">
+          <p class="cart-modal__empty-title">Todavía no agregaste productos.</p>
+          <p class="cart-modal__empty-copy">Elegí un artículo del catálogo para empezar tu compra.</p>
+        </div>
+
+        <div *ngFor="let item of carrito" class="cart-item">
+          <img [src]="item.producto.img" [alt]="item.producto.nombre" class="cart-item__image">
+
+          <div class="cart-item__info">
+            <h3 class="cart-item__title">{{ item.producto.nombre }}</h3>
+            <p class="cart-item__description">{{ item.producto.descripcion }}</p>
+            <div class="cart-item__prices">
+              <span>Precio: ${{ formatPrice(item.producto.precio) }}</span>
+              <strong>Subtotal: ${{ formatPrice(item.getSubtotal()) }}</strong>
+            </div>
+          </div>
+
+          <div class="cart-item__controls">
+            <button class="btn cart-item__control-button" (click)="disminuir(item)">−</button>
+            <span class="cart-item__quantity">{{ item.cantidad }}</span>
+            <button class="btn cart-item__control-button" (click)="aumentar(item)" [disabled]="item.producto.stock === 0">+</button>
+          </div>
+        </div>
+
+        <div class="cart-modal__total">
+          <span>Total final</span>
+          <strong>$ {{ formatPrice(getTotal()) }}</strong>
+        </div>
+      </div>
+
+      <div class="modal-footer cart-modal__footer">
+        <button class="btn cart-modal__checkout-button w-100">Check Out</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,32 +1,62 @@
-<nav class="navbar navbar-expand-lg navbar-dark custom-navbar sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark navbar-shell sticky-top">
   <div class="container">
-    <a class="navbar-brand fw-bold" routerLink="/punto1">
-      Angular<span>Lab</span>
+    <a class="navbar-brand navbar-branding" routerLink="/punto1">
+      <span class="navbar-branding__title">Angular<span>Lab</span></span>
     </a>
 
     <button
-      class="navbar-toggler"
+      class="navbar-toggler navbar-shell__toggler"
       type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#mainNavbar">
+      [attr.aria-expanded]="isMenuOpen"
+      aria-controls="mainNavbar"
+      aria-label="Abrir o cerrar navegacion"
+      (click)="toggleMenu()">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="mainNavbar">
-      <ul class="navbar-nav ms-auto gap-lg-3">
+    <div
+      class="collapse navbar-collapse navbar-shell__collapse"
+      [class.show]="isMenuOpen"
+      id="mainNavbar">
+      <ul class="navbar-nav ms-auto navbar-shell__nav">
         <li class="nav-item">
-          <a class="nav-link" routerLink="/punto1" routerLinkActive="active">
+          <a
+            class="nav-link navbar-shell__link"
+            routerLink="/punto1"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 1
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">
+          <a
+            class="nav-link navbar-shell__link"
+            routerLink="/punto2"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 2
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link disabled">
+          <a
+            class="nav-link navbar-shell__link"
+            routerLink="/punto3"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
             Punto 3
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link navbar-shell__link"
+            routerLink="/punto4"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            (click)="closeMenu()">
+            Punto 4
           </a>
         </li>
       </ul>
