@@ -7,12 +7,12 @@ import { ProductoService } from '../../../services/producto';
 @Component({
   selector: 'app-punto2',
   imports: [CommonModule],
-  templateUrl: './punto2.html',
-  styleUrl: './punto2.css'
+  templateUrl: './punto2.html'
 })
 export class Punto2 {
   productos: Producto[] = [];
   carrito: ItemCarrito[] = [];
+  isCartOpen = false;
 
   constructor(private productoService: ProductoService) {
     this.productos = this.productoService.getProductos();
@@ -41,5 +41,13 @@ export class Punto2 {
 
   formatPrice(precio: number): string {
     return new Intl.NumberFormat('es-AR').format(precio);
+  }
+
+  openCart(): void {
+    this.isCartOpen = true;
+  }
+
+  closeCart(): void {
+    this.isCartOpen = false;
   }
 }

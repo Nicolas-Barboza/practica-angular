@@ -1,67 +1,74 @@
-<section class="memory-page">
-  <div class="container py-5">
-    <div class="memory-shell mx-auto">
-      <header class="memory-hero text-center">
-        <h2 class="memory-title">Juego de Memoria</h2>
-        <p class="memory-subtitle">
-          Encontrá todas las parejas antes de quedarte sin intentos.
-        </p>
-      </header>
+<section class="bg-[#111215] px-4 py-8 text-[#f7f3ea] sm:px-5 lg:px-6 lg:py-12">
+  <div class="mx-auto max-w-5xl rounded-[1.7rem] border border-white/10 bg-[#1b1d22] p-5 shadow-editorial sm:p-6 lg:p-8">
+    <header class="mx-auto max-w-2xl text-center">
+      <p class="text-[0.68rem] font-extrabold uppercase tracking-[0.26em] text-[#d7c8aa]">Juego visual</p>
+      <h2 class="mt-2.5 font-display text-[2.7rem] font-bold leading-none tracking-[-0.05em] text-white sm:text-[3.2rem]">
+        Juego de Memoria
+      </h2>
+      <p class="mt-4 text-[0.92rem] leading-7 text-white/65">
+        Encontrá todas las parejas antes de quedarte sin intentos.
+      </p>
+    </header>
 
-      <div class="memory-toolbar">
-        <div class="memory-actions">
-          <button class="btn memory-btn memory-btn--start" (click)="iniciar()">Iniciar</button>
-          <button class="btn memory-btn memory-btn--reset" (click)="reiniciar()">Reiniciar</button>
+    <div class="mt-8 flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
+      <div class="flex flex-col gap-2.5 sm:flex-row">
+        <button
+          class="rounded-full bg-[#f0b44c] px-5 py-2.5 text-[0.78rem] font-extrabold uppercase tracking-[0.16em] text-carbon transition hover:-translate-y-0.5 hover:bg-[#e3a12c]"
+          (click)="iniciar()">
+          Iniciar
+        </button>
+        <button
+          class="rounded-full border border-white/15 px-5 py-2.5 text-[0.78rem] font-extrabold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 hover:bg-white hover:text-carbon"
+          (click)="reiniciar()">
+          Reiniciar
+        </button>
+      </div>
+
+      <div *ngIf="juegoIniciado" class="grid gap-3 sm:grid-cols-2">
+        <div class="rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3.5">
+          <span class="block text-[0.66rem] font-extrabold uppercase tracking-[0.18em] text-white/45">Intentos</span>
+          <strong class="mt-2 block text-[1.6rem] font-extrabold text-white">{{ intentos }}</strong>
         </div>
-
-        <div *ngIf="juegoIniciado" class="memory-stats">
-          <div class="memory-stat">
-            <span class="memory-stat__label">Intentos</span>
-            <strong class="memory-stat__value">{{ intentos }}</strong>
-          </div>
-          <div class="memory-stat">
-            <span class="memory-stat__label">Aciertos</span>
-            <strong class="memory-stat__value">{{ aciertos }}</strong>
-          </div>
+        <div class="rounded-[1.2rem] border border-white/10 bg-white/5 px-4 py-3.5">
+          <span class="block text-[0.66rem] font-extrabold uppercase tracking-[0.18em] text-white/45">Aciertos</span>
+          <strong class="mt-2 block text-[1.6rem] font-extrabold text-white">{{ aciertos }}</strong>
         </div>
       </div>
+    </div>
 
-      <div *ngIf="!juegoIniciado" class="memory-message memory-message--info">
-        Presioná iniciar para revelar el tablero.
-      </div>
+    <div *ngIf="!juegoIniciado" class="mt-5 rounded-[1.2rem] border border-sky-300/20 bg-sky-300/10 px-4 py-3.5 text-center text-[0.9rem] font-semibold text-sky-100">
+      Presioná iniciar para revelar el tablero.
+    </div>
 
-      <div *ngIf="victoria" class="memory-message memory-message--success">
-        ¡Ganaste! Encontraste todas las parejas.
-      </div>
+    <div *ngIf="victoria" class="mt-5 rounded-[1.2rem] border border-emerald-300/20 bg-emerald-300/10 px-4 py-3.5 text-center text-[0.9rem] font-semibold text-emerald-100">
+      ¡Ganaste! Encontraste todas las parejas.
+    </div>
 
-      <div *ngIf="derrota" class="memory-message memory-message--danger">
-        Se terminaron los intentos. Probá otra vez.
-      </div>
+    <div *ngIf="derrota" class="mt-5 rounded-[1.2rem] border border-rose-300/20 bg-rose-300/10 px-4 py-3.5 text-center text-[0.9rem] font-semibold text-rose-100">
+      Se terminaron los intentos. Probá otra vez.
+    </div>
 
-      <div class="row justify-content-center g-3 memory-grid">
+    <div class="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6">
+      <div *ngFor="let carta of cartas" (click)="seleccionar(carta)">
         <div
-          class="col-4 col-sm-3 col-md-2"
-          *ngFor="let carta of cartas"
-          (click)="seleccionar(carta)">
+          class="group h-28 cursor-pointer overflow-hidden rounded-[1.2rem] border border-white/10 bg-[#262932] shadow-lg transition duration-200 hover:-translate-y-1 hover:border-[#f0b44c]/60 sm:h-32"
+          [class.border-sky-300/40]="carta.descubierta || carta.encontrada"
+          [class.border-emerald-300/50]="carta.encontrada"
+          [class.cursor-default]="bloqueado && !carta.descubierta && !carta.encontrada"
+          [class.opacity-80]="bloqueado && !carta.descubierta && !carta.encontrada">
+
+          <img
+            *ngIf="carta.descubierta || carta.encontrada"
+            [src]="carta.img"
+            [alt]="'Carta ' + carta.nombre"
+            class="h-full w-full object-cover">
 
           <div
-            class="memory-card"
-            [class.memory-card--visible]="carta.descubierta || carta.encontrada"
-            [class.memory-card--matched]="carta.encontrada"
-            [class.memory-card--locked]="bloqueado && !carta.descubierta && !carta.encontrada">
-
-            <img
-              *ngIf="carta.descubierta || carta.encontrada"
-              [src]="carta.img"
-              [alt]="'Carta ' + carta.nombre"
-              class="memory-img">
-
-            <div
-              *ngIf="!carta.descubierta && !carta.encontrada"
-              class="card-back">
-              <span>?</span>
-            </div>
-
+            *ngIf="!carta.descubierta && !carta.encontrada"
+            class="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#ff8a5b] via-[#f0b44c] to-[#4f8cff]">
+            <span class="flex h-12 w-12 items-center justify-center rounded-full border border-white/30 bg-white/20 text-2xl font-extrabold text-white">
+              ?
+            </span>
           </div>
         </div>
       </div>

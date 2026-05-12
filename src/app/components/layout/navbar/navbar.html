@@ -1,59 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-shell sticky-top">
-  <div class="container">
-    <a class="navbar-brand navbar-branding" routerLink="/punto1">
-      <span class="navbar-branding__title">Angular<span>Lab</span></span>
+<nav class="sticky top-0 z-40 border-b border-black/10 bg-[#f3ede2]/90 backdrop-blur">
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-5 px-4 py-3 sm:px-5 lg:px-6">
+    <a class="flex flex-col no-underline" routerLink="/punto1">
+      <span class="font-display text-[1.7rem] font-bold tracking-[-0.04em] text-carbon sm:text-[1.85rem]">
+        Angular<span class="text-acento">Lab</span>
+      </span>
+      <span class="text-[0.58rem] font-semibold uppercase tracking-[0.32em] text-black/45">
+        Practica visual
+      </span>
     </a>
 
     <button
-      class="navbar-toggler navbar-shell__toggler"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white/70 text-carbon transition hover:-translate-y-0.5 hover:bg-white lg:hidden"
       type="button"
       [attr.aria-expanded]="isMenuOpen"
       aria-controls="mainNavbar"
       aria-label="Abrir o cerrar navegacion"
       (click)="toggleMenu()">
-      <span class="navbar-toggler-icon"></span>
+      <span class="relative h-4 w-5">
+        <span class="absolute left-0 top-0 h-0.5 w-5 bg-current"></span>
+        <span class="absolute left-0 top-1.5 h-0.5 w-5 bg-current"></span>
+        <span class="absolute left-0 top-3 h-0.5 w-5 bg-current"></span>
+      </span>
     </button>
 
     <div
-      class="collapse navbar-collapse navbar-shell__collapse"
-      [class.show]="isMenuOpen"
-      id="mainNavbar">
-      <ul class="navbar-nav ms-auto navbar-shell__nav">
-        <li class="nav-item">
+      id="mainNavbar"
+      class="absolute left-4 right-4 top-full mt-2 rounded-[1.6rem] border border-black/10 bg-[#f8f3ea] p-2.5 shadow-editorial lg:static lg:mt-0 lg:block lg:rounded-none lg:border-0 lg:bg-transparent lg:p-0 lg:shadow-none"
+      [class.hidden]="!isMenuOpen">
+      <ul class="flex flex-col gap-1.5 lg:flex-row lg:items-center lg:justify-end">
+        <li>
           <a
-            class="nav-link navbar-shell__link"
+            class="block rounded-full px-3.5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-black/55 transition hover:bg-black hover:text-tinta"
             routerLink="/punto1"
-            routerLinkActive="active"
+            routerLinkActive="bg-black text-tinta"
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMenu()">
             Punto 1
           </a>
         </li>
-        <li class="nav-item">
+        <li>
           <a
-            class="nav-link navbar-shell__link"
+            class="block rounded-full px-3.5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-black/55 transition hover:bg-black hover:text-tinta"
             routerLink="/punto2"
-            routerLinkActive="active"
+            routerLinkActive="bg-black text-tinta"
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMenu()">
             Punto 2
           </a>
         </li>
-        <li class="nav-item">
+        <li>
           <a
-            class="nav-link navbar-shell__link"
+            class="block rounded-full px-3.5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-black/55 transition hover:bg-black hover:text-tinta"
             routerLink="/punto3"
-            routerLinkActive="active"
+            routerLinkActive="bg-black text-tinta"
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMenu()">
             Punto 3
           </a>
         </li>
-        <li class="nav-item">
+        <li>
           <a
-            class="nav-link navbar-shell__link"
+            class="block rounded-full px-3.5 py-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-black/55 transition hover:bg-black hover:text-tinta"
             routerLink="/punto4"
-            routerLinkActive="active"
+            routerLinkActive="bg-black text-tinta"
             [routerLinkActiveOptions]="{ exact: true }"
             (click)="closeMenu()">
             Punto 4

@@ -1,63 +1,70 @@
-<section class="event-showcase">
-  <div class="container">
-    <div class="event-showcase__hero text-center text-lg-start">
-      <div class="row align-items-center g-4 g-xl-5">
-        <div class="col-lg-5">
-          <p class="event-showcase__kicker">Carrusel editorial de eventos</p>
-          <h1 class="event-showcase__title">Descubrí experiencias con una presentación más inmersiva.</h1>
-          <p class="event-showcase__lead">
-            Un bloque visual pensado para destacar cada evento con mejor jerarquía,
-            navegación clara y una estética premium.
-          </p>
+<section class="px-4 py-8 sm:px-5 lg:px-6 lg:py-12">
+  <div class="mx-auto grid max-w-6xl gap-8 lg:grid-cols-12 lg:items-start">
+    <div class="lg:col-span-4 lg:pt-0">
+      <p class="mb-2.5 text-[0.68rem] font-extrabold uppercase tracking-[0.26em] text-acento">
+        Carrusel editorial de eventos
+      </p>
+      <h1 class="max-w-sm font-display text-[2.6rem] font-bold leading-none tracking-[-0.05em] text-carbon sm:text-[3.2rem]">
+        Descubrí experiencias con una presentación más inmersiva.
+      </h1>
+      <p class="mt-4 max-w-lg text-[0.92rem] leading-7 text-black/65">
+        Un bloque visual pensado para destacar cada evento con mejor jerarquía,
+        navegación clara y una estética premium.
+      </p>
+    </div>
+
+    <article class="overflow-hidden rounded-[1.7rem] border border-black/10 bg-[#fffaf2] shadow-editorial lg:col-span-8 lg:mt-6">
+      <div class="grid lg:grid-cols-[1.05fr_0.95fr]">
+        <div class="relative h-[17rem] overflow-hidden bg-carbon lg:h-[20rem]">
+          <span class="absolute left-4 top-4 z-10 rounded-full bg-white/15 px-3 py-1.5 text-[0.66rem] font-bold uppercase tracking-[0.16em] text-white backdrop-blur">
+            Evento destacado
+          </span>
+          <img
+            [src]="eventos[indiceActual].img"
+            [alt]="eventos[indiceActual].nombre"
+            class="h-full w-full object-cover transition duration-700 hover:scale-105"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/35 to-transparent"></div>
         </div>
 
-        <div class="col-lg-7">
-          <article class="event-card">
-            <div class="row g-0 align-items-stretch">
-              <div class="col-lg-6">
-                <div class="event-card__media">
-                  <span class="event-card__badge">Evento destacado</span>
-                  <img
-                    [src]="eventos[indiceActual].img"
-                    [alt]="eventos[indiceActual].nombre"
-                    class="event-card__image"
-                  />
-                </div>
-              </div>
-
-              <div class="col-lg-6">
-                <div class="event-card__body">
-                  <div class="event-card__meta">
-                    <span class="event-card__index">0{{ indiceActual + 1 }}</span>
-                    <span class="event-card__divider"></span>
-                    <span>{{ eventos.length }} experiencias</span>
-                  </div>
-
-                  <h2 class="event-card__title">{{ eventos[indiceActual].nombre }}</h2>
-
-                  <p class="event-card__description">
-                    {{ eventos[indiceActual].descripcion }}
-                  </p>
-
-                  <div class="event-card__controls">
-                    <button class="btn event-card__button event-card__button--ghost" (click)="anterior()">
-                      Anterior
-                    </button>
-
-                    <button class="btn event-card__button event-card__button--primary" (click)="siguiente()">
-                      Siguiente
-                    </button>
-                  </div>
-
-                  <p class="event-card__counter">
-                    Navegando el evento {{ indiceActual + 1 }} de {{ eventos.length }}
-                  </p>
-                </div>
-              </div>
+        <div class="flex flex-col justify-between gap-6 p-5 sm:p-6 lg:p-8">
+          <div>
+            <div class="flex items-center gap-2.5 text-[0.66rem] font-semibold uppercase tracking-[0.18em] text-black/45">
+              <span class="text-acento">0{{ indiceActual + 1 }}</span>
+              <span class="h-px w-8 bg-black/15"></span>
+              <span>{{ eventos.length }} experiencias</span>
             </div>
-          </article>
+
+            <h2 class="mt-4 font-display text-[2rem] font-bold leading-tight tracking-[-0.04em] text-carbon sm:text-[2.5rem]">
+              {{ eventos[indiceActual].nombre }}
+            </h2>
+
+            <p class="mt-4 text-[0.92rem] leading-7 text-black/65">
+              {{ eventos[indiceActual].descripcion }}
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex flex-col gap-2.5 sm:flex-row">
+              <button
+                class="rounded-full border border-black/10 px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-carbon transition hover:-translate-y-0.5 hover:bg-black hover:text-tinta"
+                (click)="anterior()">
+                Anterior
+              </button>
+
+              <button
+                class="rounded-full bg-carbon px-5 py-2.5 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-tinta transition hover:-translate-y-0.5 hover:bg-acento"
+                (click)="siguiente()">
+                Siguiente
+              </button>
+            </div>
+
+            <p class="text-[0.76rem] font-semibold uppercase tracking-[0.14em] text-acento">
+              Navegando el evento {{ indiceActual + 1 }} de {{ eventos.length }}
+            </p>
+          </div>
         </div>
       </div>
-    </div>
+    </article>
   </div>
 </section>

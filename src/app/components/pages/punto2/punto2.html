@@ -1,118 +1,154 @@
-<section class="shop-showcase">
-  <div class="container">
-    <div class="shop-showcase__hero">
-      <div class="row align-items-center g-4 g-xl-5">
-        <div class="col-lg-7">
-          <p class="shop-showcase__kicker">Storefront interactivo</p>
-          <h1 class="shop-showcase__title">Armá tu setup con una experiencia de compra más clara y atractiva.</h1>
-          <p class="shop-showcase__lead">
-            Productos destacados, stock visible y un carrito compacto para mantener el flujo
-            de compra simple desde desktop y mobile.
-          </p>
-        </div>
-
-        <div class="col-lg-5">
-          <aside class="shop-summary">
-
-            <div class="shop-summary__item">
-              <span class="shop-summary__label">En carrito</span>
-              <strong class="shop-summary__value">{{ getCantidadCarrito() }}</strong>
-            </div>
-            <div class="shop-summary__item">
-              <span class="shop-summary__label">Total</span>
-              <strong class="shop-summary__value">$ {{ formatPrice(getTotal()) }}</strong>
-            </div>
-
-            <button class="btn shop-summary__button" data-bs-toggle="modal" data-bs-target="#carritoModal">
-              Ver carrito {{ carrito.length }}
-            </button>
-          </aside>
-        </div>
+<section class="px-4 py-8 sm:px-5 lg:px-6 lg:py-12">
+  <div class="mx-auto max-w-6xl space-y-8">
+    <div class="grid gap-6 lg:grid-cols-12 lg:items-end">
+      <div class="lg:col-span-7">
+        <p class="mb-2.5 text-[0.68rem] font-extrabold uppercase tracking-[0.26em] text-acento">
+          Storefront interactivo
+        </p>
+        <h1 class="max-w-2xl font-display text-[2.6rem] font-bold leading-none tracking-[-0.05em] text-carbon sm:text-[3.2rem]">
+          Armá tu setup con una experiencia de compra más clara y atractiva.
+        </h1>
+        <p class="mt-4 max-w-xl text-[0.92rem] leading-7 text-black/65">
+          Productos destacados, stock visible y un carrito compacto para mantener el flujo
+          de compra simple desde desktop y mobile.
+        </p>
       </div>
+
+      <aside class="grid gap-3.5 rounded-[1.7rem] border border-black/10 bg-[#fffaf2] p-5 shadow-editorial lg:col-span-5">
+        <div class="flex items-end justify-between gap-4 border-b border-black/10 pb-3.5">
+          <span class="text-[0.66rem] font-extrabold uppercase tracking-[0.2em] text-black/45">En carrito</span>
+          <strong class="text-[1.7rem] font-extrabold text-carbon">{{ getCantidadCarrito() }}</strong>
+        </div>
+        <div class="flex items-end justify-between gap-4">
+          <span class="text-[0.66rem] font-extrabold uppercase tracking-[0.2em] text-black/45">Total</span>
+          <strong class="text-[1.4rem] font-extrabold text-acento">$ {{ formatPrice(getTotal()) }}</strong>
+        </div>
+
+        <button
+          class="mt-1 rounded-full bg-carbon px-5 py-3 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-tinta transition hover:-translate-y-0.5 hover:bg-acento"
+          type="button"
+          (click)="openCart()">
+          Ver carrito {{ carrito.length }}
+        </button>
+      </aside>
     </div>
 
-    <div class="row g-4">
-      <div class="col-12 col-md-6 col-xl-4" *ngFor="let p of productos">
-        <article class="product-card h-100">
-          <div class="product-card__media">
-            <span class="product-card__badge">{{ p.stock > 0 ? 'Disponible' : 'Agotado' }}</span>
-            <img [src]="p.img" [alt]="p.nombre" class="product-card__image">
+    <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+      <article
+        class="group overflow-hidden rounded-[1.7rem] border border-black/10 bg-[#fffaf2] shadow-editorial"
+        *ngFor="let p of productos">
+        <div class="relative h-56 overflow-hidden bg-carbon">
+          <span class="absolute left-4 top-4 z-10 rounded-full bg-white/85 px-3 py-1.5 text-[0.62rem] font-extrabold uppercase tracking-[0.16em] text-carbon">
+            {{ p.stock > 0 ? 'Disponible' : 'Agotado' }}
+          </span>
+          <img [src]="p.img" [alt]="p.nombre" class="h-full w-full object-cover transition duration-700 group-hover:scale-105">
+        </div>
+
+        <div class="grid gap-4 p-5">
+          <div class="flex items-center justify-between gap-3 text-[0.66rem] font-bold uppercase tracking-[0.16em] text-black/45">
+            <span>Tecnología</span>
+            <span>Stock: {{ p.stock }}</span>
           </div>
 
-          <div class="product-card__body">
-            <div class="product-card__topline">
-              <span class="product-card__category">Tecnología</span>
-              <span class="product-card__stock">Stock: {{ p.stock }}</span>
-            </div>
-
-            <h2 class="product-card__title">{{ p.nombre }}</h2>
-            <p class="product-card__description">{{ p.descripcion }}</p>
-
-            <div class="product-card__footer">
-              <div>
-                <p class="product-card__price">$ {{ formatPrice(p.precio) }}</p>
-                <p class="product-card__note">Precio final por unidad</p>
-              </div>
-
-              <button
-                class="btn product-card__button"
-                (click)="agregar(p)"
-                [disabled]="p.stock === 0">
-                {{ p.stock === 0 ? 'Sin stock' : 'Agregar' }}
-              </button>
-            </div>
+          <div class="space-y-2.5">
+            <h2 class="font-display text-[2rem] font-bold leading-none tracking-[-0.04em] text-carbon">
+              {{ p.nombre }}
+            </h2>
+            <p class="text-[0.88rem] leading-6 text-black/65">{{ p.descripcion }}</p>
           </div>
-        </article>
-      </div>
+
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p class="text-[1.4rem] font-extrabold text-acento">$ {{ formatPrice(p.precio) }}</p>
+              <p class="text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-black/45">Precio final por unidad</p>
+            </div>
+
+            <button
+              class="rounded-full border border-carbon px-4 py-2.5 text-[0.76rem] font-bold uppercase tracking-[0.16em] text-carbon transition hover:-translate-y-0.5 hover:bg-carbon hover:text-tinta disabled:cursor-not-allowed disabled:border-black/10 disabled:bg-black/5 disabled:text-black/30"
+              (click)="agregar(p)"
+              [disabled]="p.stock === 0">
+              {{ p.stock === 0 ? 'Sin stock' : 'Agregar' }}
+            </button>
+          </div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<div class="modal fade" id="carritoModal" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content cart-modal">
-      <div class="modal-header cart-modal__header">
-        <div>
-          <p class="cart-modal__eyebrow">Resumen de compra</p>
-          <h2 class="modal-title cart-modal__title" id="carritoModalLabel">Carrito de compras</h2>
-        </div>
-        <button class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+<div
+  *ngIf="isCartOpen"
+  class="fixed inset-0 z-50 flex items-center justify-center bg-black/55 px-4 py-6"
+  (click)="closeCart()">
+  <div
+    class="flex max-h-[88vh] w-full max-w-3xl flex-col overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#17181c] text-tinta shadow-editorial"
+    (click)="$event.stopPropagation()">
+    <div class="flex items-start justify-between gap-4 border-b border-white/10 p-5">
+      <div>
+        <p class="text-[0.66rem] font-extrabold uppercase tracking-[0.22em] text-[#d7c8aa]">
+          Resumen de compra
+        </p>
+        <h2 class="mt-2 font-display text-[2rem] font-bold tracking-[-0.04em]" id="carritoModalLabel">
+          Carrito de compras
+        </h2>
+      </div>
+      <button
+        class="rounded-full border border-white/15 px-3.5 py-2 text-[0.64rem] font-bold uppercase tracking-[0.16em] text-white/80 transition hover:bg-white hover:text-carbon"
+        type="button"
+        aria-label="Cerrar"
+        (click)="closeCart()">
+        Cerrar
+      </button>
+    </div>
+
+    <div class="min-h-0 flex-1 space-y-4 overflow-y-auto p-5">
+      <div *ngIf="carrito.length === 0" class="rounded-[1.3rem] border border-dashed border-white/15 bg-white/5 px-5 py-10 text-center">
+        <p class="text-base font-bold text-white">Todavía no agregaste productos.</p>
+        <p class="mt-2 text-[0.88rem] leading-6 text-white/65">Elegí un artículo del catálogo para empezar tu compra.</p>
       </div>
 
-      <div class="modal-body cart-modal__body">
-        <div *ngIf="carrito.length === 0" class="cart-modal__empty">
-          <p class="cart-modal__empty-title">Todavía no agregaste productos.</p>
-          <p class="cart-modal__empty-copy">Elegí un artículo del catálogo para empezar tu compra.</p>
-        </div>
+      <div
+        *ngFor="let item of carrito"
+        class="grid gap-4 rounded-[1.3rem] border border-white/10 bg-white/[0.04] p-3.5 md:grid-cols-[auto_1fr_auto] md:items-center">
+        <img [src]="item.producto.img" [alt]="item.producto.nombre" class="h-16 w-16 rounded-[1rem] object-cover">
 
-        <div *ngFor="let item of carrito" class="cart-item">
-          <img [src]="item.producto.img" [alt]="item.producto.nombre" class="cart-item__image">
-
-          <div class="cart-item__info">
-            <h3 class="cart-item__title">{{ item.producto.nombre }}</h3>
-            <p class="cart-item__description">{{ item.producto.descripcion }}</p>
-            <div class="cart-item__prices">
-              <span>Precio: ${{ formatPrice(item.producto.precio) }}</span>
-              <strong>Subtotal: ${{ formatPrice(item.getSubtotal()) }}</strong>
-            </div>
+        <div class="space-y-2">
+          <h3 class="text-[1rem] font-bold text-white">{{ item.producto.nombre }}</h3>
+          <p class="text-[0.82rem] leading-6 text-white/65">{{ item.producto.descripcion }}</p>
+          <div class="flex flex-wrap gap-3 text-[0.64rem] font-semibold uppercase tracking-[0.12em] text-[#d7c8aa]">
+            <span>Precio: ${{ formatPrice(item.producto.precio) }}</span>
+            <strong class="text-acento">Subtotal: ${{ formatPrice(item.getSubtotal()) }}</strong>
           </div>
-
-          <div class="cart-item__controls">
-            <button class="btn cart-item__control-button" (click)="disminuir(item)">−</button>
-            <span class="cart-item__quantity">{{ item.cantidad }}</span>
-            <button class="btn cart-item__control-button" (click)="aumentar(item)" [disabled]="item.producto.stock === 0">+</button>
-          </div>
         </div>
 
-        <div class="cart-modal__total">
-          <span>Total final</span>
-          <strong>$ {{ formatPrice(getTotal()) }}</strong>
+        <div class="flex items-center gap-3">
+          <button
+            class="h-9 w-9 rounded-full border border-white/15 text-base font-bold text-white transition hover:bg-white hover:text-carbon"
+            type="button"
+            (click)="disminuir(item)">
+            −
+          </button>
+          <span class="min-w-7 text-center text-base font-extrabold">{{ item.cantidad }}</span>
+          <button
+            class="h-9 w-9 rounded-full border border-white/15 text-base font-bold text-white transition hover:bg-white hover:text-carbon disabled:cursor-not-allowed disabled:opacity-30"
+            type="button"
+            (click)="aumentar(item)"
+            [disabled]="item.producto.stock === 0">
+            +
+          </button>
         </div>
       </div>
+    </div>
 
-      <div class="modal-footer cart-modal__footer">
-        <button class="btn cart-modal__checkout-button w-100">Check Out</button>
+    <div class="shrink-0 space-y-3 border-t border-white/10 bg-[#17181c] p-5">
+      <div class="flex items-center justify-between text-[0.74rem] font-bold uppercase tracking-[0.16em] text-[#d7c8aa]">
+        <span>Total final</span>
+        <strong class="text-[1.4rem] text-acento">$ {{ formatPrice(getTotal()) }}</strong>
       </div>
+
+      <button class="w-full rounded-full bg-acento px-5 py-3 text-[0.78rem] font-bold uppercase tracking-[0.16em] text-white transition hover:-translate-y-0.5 hover:bg-amber-700">
+        Check Out
+      </button>
     </div>
   </div>
 </div>

@@ -1,272 +1,252 @@
-<div class="punto4-shell">
-  <div class="container py-5 text-white">
-    <section class="hero-panel mb-4">
-      <div>
-        <h1 class="hero-title mt-3 mb-2">Inscripción a cursos</h1>
-        <p class="hero-text mb-0">
+<section class="bg-[#111215] px-4 py-8 text-[#f7f3ea] sm:px-5 lg:px-6 lg:py-12">
+  <div class="mx-auto max-w-6xl space-y-6">
+    <div class="overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#1b1d22] p-5 shadow-editorial lg:p-6">
+      <div class="flex min-w-0 flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+        <div class="min-w-0 max-w-3xl">
+        <p class="text-[0.68rem] font-extrabold uppercase tracking-[0.26em] text-[#d7c8aa]">Panel académico</p>
+        <h1 class="mt-2.5 font-display text-[2.6rem] font-bold leading-none tracking-[-0.05em] text-white sm:text-[3.2rem]">
+          Inscripción a cursos
+        </h1>
+        <p class="mt-4 text-[0.92rem] leading-7 text-white/65">
           Registrá alumnos, aplicá descuentos por categoría y controlá el total
           acumulado desde un solo panel.
         </p>
-      </div>
+        </div>
 
-      <div class="hero-highlight">
-        <span class="hero-highlight-label">Cursos disponibles</span>
-        <strong>{{ cursos.length }}</strong>
+        <div class="self-start rounded-[1.2rem] border border-white/10 bg-white/5 px-5 py-4 lg:min-w-[11rem] lg:self-auto lg:text-right">
+          <span class="block text-[0.66rem] font-extrabold uppercase tracking-[0.18em] text-white/45">Cursos disponibles</span>
+          <strong class="mt-2 block text-[2rem] font-extrabold text-[#f0b44c]">{{ cursos.length }}</strong>
+        </div>
       </div>
-    </section>
+    </div>
 
-    <div class="row g-4 align-items-start">
-      <div class="col-lg-5">
-        <div class="form-card">
-          <div class="table-header">
-            <h2 class="section-title mb-0">Formulario</h2>
+    <div class="grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
+      <div class="min-w-0 rounded-[1.7rem] border border-white/10 bg-[#1b1d22] p-5 shadow-editorial lg:p-6">
+        <h2 class="font-display text-[2rem] font-bold tracking-[-0.04em] text-white">Formulario</h2>
+
+        <form #formInscripcion="ngForm" class="mt-5 grid gap-4">
+          <div class="grid gap-2">
+            <label for="dni" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">DNI</label>
+            <input
+              type="text"
+              id="dni"
+              name="dni"
+              class="w-full min-w-0 rounded-[1rem] border border-white/10 bg-[#121419] px-3.5 py-3 text-[0.9rem] text-white outline-none transition placeholder:text-white/25 focus:border-[#f0b44c]"
+              placeholder="Ej: 40123456"
+              required
+              minlength="7"
+              maxlength="8"
+              pattern="[0-9]*"
+              [(ngModel)]="inscripcion.dni"
+              #dniInput="ngModel">
+            <div
+              *ngIf="dniInput.invalid && (dniInput.dirty || dniInput.touched)"
+              class="rounded-[1rem] border border-rose-300/20 bg-rose-300/10 px-3.5 py-2.5 text-[0.82rem] text-rose-100">
+              <div *ngIf="dniInput.errors?.['required']">El DNI es requerido.</div>
+              <div *ngIf="dniInput.errors?.['minlength']">El DNI debe tener al menos 7 números.</div>
+              <div *ngIf="dniInput.errors?.['pattern']">El DNI solo debe contener números.</div>
+            </div>
           </div>
 
-          <form #formInscripcion="ngForm" class="form-layout">
-            <div class="field-group">
-              <label for="dni" class="form-label">DNI</label>
-
-              <input
-                type="text"
-                id="dni"
-                name="dni"
-                class="form-control"
-                placeholder="Ej: 40123456"
-                required
-                minlength="7"
-                maxlength="8"
-                pattern="[0-9]*"
-                [(ngModel)]="inscripcion.dni"
-                #dniInput="ngModel">
-
-              <div
-                *ngIf="dniInput.invalid && (dniInput.dirty || dniInput.touched)"
-                class="alert alert-danger mt-2">
-
-                <div *ngIf="dniInput.errors?.['required']">
-                  El DNI es requerido.
-                </div>
-
-                <div *ngIf="dniInput.errors?.['minlength']">
-                  El DNI debe tener al menos 7 números.
-                </div>
-
-                <div *ngIf="dniInput.errors?.['pattern']">
-                  El DNI solo debe contener números.
-                </div>
-              </div>
+          <div class="grid gap-2">
+            <label for="email" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="w-full min-w-0 rounded-[1rem] border border-white/10 bg-[#121419] px-3.5 py-3 text-[0.9rem] text-white outline-none transition placeholder:text-white/25 focus:border-[#f0b44c]"
+              placeholder="alumno@email.com"
+              required
+              email
+              [(ngModel)]="inscripcion.email"
+              #emailInput="ngModel">
+            <div
+              *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
+              class="rounded-[1rem] border border-rose-300/20 bg-rose-300/10 px-3.5 py-2.5 text-[0.82rem] text-rose-100">
+              <div *ngIf="emailInput.errors?.['required']">El email es requerido.</div>
+              <div *ngIf="emailInput.errors?.['email']">Debe ingresar un email válido.</div>
             </div>
+          </div>
 
-            <div class="field-group">
-              <label for="email" class="form-label">Email</label>
-
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-control"
-                placeholder="alumno@email.com"
-                required
-                email
-                [(ngModel)]="inscripcion.email"
-                #emailInput="ngModel">
-
-              <div
-                *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)"
-                class="alert alert-danger mt-2">
-
-                <div *ngIf="emailInput.errors?.['required']">
-                  El email es requerido.
-                </div>
-
-                <div *ngIf="emailInput.errors?.['email']">
-                  Debe ingresar un email válido.
-                </div>
-              </div>
-            </div>
-
-            <div class="field-group">
-              <label for="curso" class="form-label">Curso</label>
-
+          <div class="grid gap-2">
+            <label for="curso" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">Curso</label>
+            <div class="relative">
               <select
                 id="curso"
                 name="curso"
-                class="form-select"
+                class="w-full min-w-0 appearance-none rounded-[1rem] border border-white/10 bg-[#121419] px-3.5 py-3 pr-12 text-[0.9rem] text-white outline-none transition focus:border-[#f0b44c]"
                 required
                 [(ngModel)]="inscripcion.curso"
                 #cursoInput="ngModel"
                 (change)="seleccionarCurso()">
-
-                <option value="">Seleccione un curso</option>
-                <option *ngFor="let curso of cursos" [value]="curso.nombre">
+                <option value="" class="bg-[#121419] text-white">Seleccione un curso</option>
+                <option *ngFor="let curso of cursos" [value]="curso.nombre" class="bg-[#121419] text-white">
                   {{ curso.nombre }}
                 </option>
               </select>
-
-              <div
-                *ngIf="cursoInput.invalid && (cursoInput.dirty || cursoInput.touched)"
-                class="alert alert-danger mt-2">
-
-                <div *ngIf="cursoInput.errors?.['required']">
-                  Debe seleccionar un curso.
-                </div>
-              </div>
+              <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-white/80">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
             </div>
-
-            <div class="field-group">
-              <label for="precio" class="form-label">Precio del curso</label>
-
-              <input
-                type="number"
-                id="precio"
-                name="precio"
-                class="form-control"
-                readonly
-                [(ngModel)]="inscripcion.precio"
-                (input)="calcularPrecioFinal()">
-
-              <small class="field-hint">El precio se completa automáticamente según el curso elegido.</small>
+            <div
+              *ngIf="cursoInput.invalid && (cursoInput.dirty || cursoInput.touched)"
+              class="rounded-[1rem] border border-rose-300/20 bg-rose-300/10 px-3.5 py-2.5 text-[0.82rem] text-rose-100">
+              <div *ngIf="cursoInput.errors?.['required']">Debe seleccionar un curso.</div>
             </div>
+          </div>
 
-            <div class="field-group">
-              <label for="categoria" class="form-label">Categoría del alumno</label>
+          <div class="grid gap-2">
+            <label for="precio" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">Precio del curso</label>
+            <input
+              type="number"
+              id="precio"
+              name="precio"
+              class="w-full min-w-0 rounded-[1rem] border border-white/10 bg-white/5 px-3.5 py-3 text-[0.92rem] font-bold text-[#f0b44c] outline-none"
+              readonly
+              [(ngModel)]="inscripcion.precio"
+              (input)="calcularPrecioFinal()">
+            <small class="text-[0.78rem] leading-6 text-white/50">El precio se completa automáticamente según el curso elegido.</small>
+          </div>
 
+          <div class="grid gap-2">
+            <label for="categoria" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">Categoría del alumno</label>
+            <div class="relative">
               <select
                 id="categoria"
                 name="categoria"
-                class="form-select"
+                class="w-full min-w-0 appearance-none rounded-[1rem] border border-white/10 bg-[#121419] px-3.5 py-3 pr-12 text-[0.9rem] text-white outline-none transition focus:border-[#f0b44c]"
                 required
                 [(ngModel)]="inscripcion.categoriaAlumno"
                 #categoriaInput="ngModel"
                 (change)="calcularPrecioFinal()">
-
-                <option [ngValue]="0">Seleccione categoría</option>
-
+                <option [ngValue]="0" class="bg-[#121419] text-white">Seleccione categoría</option>
                 <option
                   *ngFor="let cat of categorias"
-                  [ngValue]="cat.id">
+                  [ngValue]="cat.id"
+                  class="bg-[#121419] text-white">
                   {{ cat.nombre }} - {{ cat.descuento }}% descuento
                 </option>
               </select>
-
-              <div
-                *ngIf="categoriaInput.invalid && (categoriaInput.dirty || categoriaInput.touched)"
-                class="alert alert-danger mt-2">
-
-                <div *ngIf="categoriaInput.errors?.['required']">
-                  Debe seleccionar una categoría.
-                </div>
-              </div>
+              <span class="pointer-events-none absolute inset-y-0 right-4 flex items-center text-white/80">
+                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M5 7.5L10 12.5L15 7.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
             </div>
-
-            <div class="field-group">
-              <label for="fecha" class="form-label">Fecha de inscripción</label>
-
-              <input
-                type="date"
-                id="fecha"
-                name="fecha"
-                class="form-control"
-                required
-                [(ngModel)]="inscripcion.fechaInscripcion"
-                #fechaInput="ngModel">
-
-              <div
-                *ngIf="fechaInput.invalid && (fechaInput.dirty || fechaInput.touched)"
-                class="alert alert-danger mt-2">
-
-                <div *ngIf="fechaInput.errors?.['required']">
-                  La fecha es requerida.
-                </div>
-              </div>
+            <div
+              *ngIf="categoriaInput.invalid && (categoriaInput.dirty || categoriaInput.touched)"
+              class="rounded-[1rem] border border-rose-300/20 bg-rose-300/10 px-3.5 py-2.5 text-[0.82rem] text-rose-100">
+              <div *ngIf="categoriaInput.errors?.['required']">Debe seleccionar una categoría.</div>
             </div>
+          </div>
 
-            <div *ngIf="mostrarPrecioFinal" class="price-box">
-              <div>
-                <span class="price-label">Precio final</span>
-                <strong>{{ precioFinal | currency:'ARS':'symbol':'1.0-0' }}</strong>
-              </div>
-
-              <span class="price-badge">Descuento aplicado</span>
+          <div class="grid gap-2">
+            <label for="fecha" class="text-[0.76rem] font-bold uppercase tracking-[0.16em] text-white/80">Fecha de inscripción</label>
+            <input
+              type="date"
+              id="fecha"
+              name="fecha"
+              class="fecha-input w-full min-w-0 rounded-[1rem] border border-white/10 bg-[#121419] px-3.5 py-3 text-[0.9rem] text-white outline-none transition focus:border-[#f0b44c]"
+              required
+              [(ngModel)]="inscripcion.fechaInscripcion"
+              #fechaInput="ngModel">
+            <div
+              *ngIf="fechaInput.invalid && (fechaInput.dirty || fechaInput.touched)"
+              class="rounded-[1rem] border border-rose-300/20 bg-rose-300/10 px-3.5 py-2.5 text-[0.82rem] text-rose-100">
+              <div *ngIf="fechaInput.errors?.['required']">La fecha es requerida.</div>
             </div>
+          </div>
 
-            <button
-              type="button"
-              class="btn submit-btn w-100"
-              [disabled]="formInscripcion.invalid || !mostrarPrecioFinal"
-              (click)="registrar(formInscripcion)">
-              Registrar inscripción
-            </button>
-          </form>
-        </div>
+          <div *ngIf="mostrarPrecioFinal" class="flex min-w-0 flex-col gap-3 rounded-[1.2rem] border border-[#f0b44c]/25 bg-[#f0b44c]/10 p-4 sm:flex-row sm:items-center sm:justify-between">
+            <div class="min-w-0">
+              <span class="block text-[0.66rem] font-extrabold uppercase tracking-[0.18em] text-white/55">Precio final</span>
+              <strong class="mt-2 block text-[1.7rem] font-extrabold text-white">{{ precioFinal | currency:'ARS':'symbol':'1.0-0' }}</strong>
+            </div>
+            <span class="inline-flex self-start rounded-full border border-white/10 bg-white/10 px-3.5 py-1.5 text-[0.64rem] font-bold uppercase tracking-[0.16em] text-white/80 sm:self-auto">
+              Descuento aplicado
+            </span>
+          </div>
+
+          <button
+            type="button"
+            class="w-full rounded-full bg-[#f0b44c] px-5 py-3 text-[0.78rem] font-extrabold uppercase tracking-[0.16em] text-carbon transition hover:-translate-y-0.5 hover:bg-[#e3a12c] disabled:cursor-not-allowed disabled:bg-white/10 disabled:text-white/35"
+            [disabled]="formInscripcion.invalid || !mostrarPrecioFinal"
+            (click)="registrar(formInscripcion)">
+            Registrar inscripción
+          </button>
+        </form>
       </div>
 
-      <div class="col-lg-7">
-        <div class="summary-grid mb-4">
-          <div class="summary-card">
-            <span>Estudiantes</span>
-            <strong>{{ contarEstudiantes() }}</strong>
+      <div class="min-w-0 space-y-5">
+        <div class="grid gap-3 sm:grid-cols-2 xl:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_minmax(0,1fr)_minmax(0,1.7fr)]">
+          <div class="min-w-0 rounded-[1.2rem] border border-white/10 bg-[#1b1d22] p-4 text-center shadow-editorial">
+            <span class="text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Estudiantes</span>
+            <strong class="mt-2.5 block text-[1.6rem] font-extrabold text-white">{{ contarEstudiantes() }}</strong>
           </div>
-
-          <div class="summary-card">
-            <span>Egresados</span>
-            <strong>{{ contarEgresados() }}</strong>
+          <div class="min-w-0 rounded-[1.2rem] border border-white/10 bg-[#1b1d22] p-4 text-center shadow-editorial">
+            <span class="text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Egresados</span>
+            <strong class="mt-2.5 block text-[1.6rem] font-extrabold text-white">{{ contarEgresados() }}</strong>
           </div>
-
-          <div class="summary-card">
-            <span>Particulares</span>
-            <strong>{{ contarParticulares() }}</strong>
+          <div class="min-w-0 rounded-[1.2rem] border border-white/10 bg-[#1b1d22] p-4 text-center shadow-editorial">
+            <span class="text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Particulares</span>
+            <strong class="mt-2.5 block text-[1.6rem] font-extrabold text-white">{{ contarParticulares() }}</strong>
           </div>
-
-          <div class="summary-card total">
-            <span>Total general</span>
-            <strong>{{ totalGeneral() | currency:'ARS':'symbol':'1.0-0' }}</strong>
+          <div class="min-w-0 rounded-[1.2rem] border border-[#f0b44c]/20 bg-[#f0b44c]/10 p-4 text-center shadow-editorial">
+            <span class="text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/55">Total general</span>
+            <strong class="mt-2.5 block whitespace-nowrap font-extrabold leading-tight tracking-[-0.03em] text-[#f0b44c] text-[clamp(1.35rem,1.05rem+0.8vw,1.85rem)]">
+              {{ totalGeneral() | currency:'ARS':'symbol':'1.0-0' }}
+            </strong>
           </div>
         </div>
 
-        <div class="table-card">
-          <div class="table-header">
-            <div>
-              <span class="section-kicker">Resumen</span>
-              <h3 class="section-title mb-1">Inscripciones registradas</h3>
-              <p class="section-text mb-0">Consultá rápidamente quién se inscribió y el monto final abonado.</p>
+        <div class="min-w-0 overflow-hidden rounded-[1.7rem] border border-white/10 bg-[#1b1d22] p-5 shadow-editorial lg:p-6">
+          <div class="flex min-w-0 flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div class="min-w-0">
+              <span class="text-[0.66rem] font-extrabold uppercase tracking-[0.18em] text-white/45">Resumen</span>
+              <h3 class="mt-2 font-display text-[2rem] font-bold tracking-[-0.04em] text-white">Inscripciones registradas</h3>
+              <p class="mt-2.5 max-w-xl text-[0.84rem] leading-6 text-white/60">
+                Consultá rápidamente quién se inscribió y el monto final abonado.
+              </p>
             </div>
 
-            <div class="table-counter">
-              <span>Registros</span>
-              <strong>{{ inscripciones.length }}</strong>
+            <div class="self-start rounded-[1rem] border border-white/10 bg-white/5 px-4 py-3.5 sm:min-w-24 sm:self-auto sm:text-right">
+              <span class="block text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Registros</span>
+              <strong class="mt-2 block text-[1.6rem] font-extrabold text-white">{{ inscripciones.length }}</strong>
             </div>
           </div>
 
-          <div *ngIf="inscripciones.length === 0" class="empty-state">
-            <strong>Todavía no hay inscripciones registradas.</strong>
-            <span>Completá el formulario para ver los registros en esta tabla.</span>
+          <div *ngIf="inscripciones.length === 0" class="mt-5 rounded-[1.2rem] border border-dashed border-white/15 bg-white/5 px-5 py-8 text-center">
+            <strong class="block text-base text-white">Todavía no hay inscripciones registradas.</strong>
+            <span class="mt-2 block text-[0.84rem] leading-6 text-white/60">Completá el formulario para ver los registros en esta tabla.</span>
           </div>
 
-          <div class="table-responsive" *ngIf="inscripciones.length > 0">
-            <table class="table enrollments-table align-middle mb-0">
+          <div class="mt-5 w-full max-w-full overflow-x-auto" *ngIf="inscripciones.length > 0">
+            <table class="w-full min-w-[54rem] border-separate border-spacing-y-3 text-left">
               <thead>
                 <tr>
-                  <th>DNI</th>
-                  <th>Email</th>
-                  <th>Curso</th>
-                  <th>Categoría</th>
-                  <th>Fecha</th>
-                  <th>Precio final</th>
-                  <th></th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">DNI</th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Email</th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Curso</th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Categoría</th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Fecha</th>
+                  <th class="px-3 py-2.5 text-[0.64rem] font-extrabold uppercase tracking-[0.14em] text-white/45">Precio final</th>
+                  <th class="px-4 py-3"></th>
                 </tr>
               </thead>
-
               <tbody>
                 <tr *ngFor="let ins of inscripciones; let i = index">
-                  <td>{{ ins.dni }}</td>
-                  <td>{{ ins.email }}</td>
-                  <td>{{ ins.curso }}</td>
-                  <td>{{ obtenerCategoriaTexto(ins.categoriaAlumno) }}</td>
-                  <td>{{ ins.fechaInscripcion | date:'dd/MM/yyyy' }}</td>
-                  <td class="price-cell">{{ ins.precioFinal | currency:'ARS':'symbol':'1.0-0' }}</td>
-                  <td>
-                    <button class="btn btn-sm delete-btn" (click)="eliminar(i)">
+                  <td class="rounded-l-[1rem] border-y border-l border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] text-white">{{ ins.dni }}</td>
+                  <td class="max-w-[14rem] whitespace-normal break-words border-y border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] text-white/85">{{ ins.email }}</td>
+                  <td class="max-w-[12rem] whitespace-normal break-words border-y border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] text-white/85">{{ ins.curso }}</td>
+                  <td class="max-w-[11rem] whitespace-normal break-words border-y border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] text-white/85">{{ obtenerCategoriaTexto(ins.categoriaAlumno) }}</td>
+                  <td class="whitespace-nowrap border-y border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] text-white/85">{{ ins.fechaInscripcion | date:'dd/MM/yyyy' }}</td>
+                  <td class="border-y border-white/10 bg-[#121419] px-3 py-3 text-[0.82rem] font-extrabold text-[#f0b44c]">{{ ins.precioFinal | currency:'ARS':'symbol':'1.0-0' }}</td>
+                  <td class="rounded-r-[1rem] border-y border-r border-white/10 bg-[#121419] px-3 py-3 text-right">
+                    <button
+                      class="shrink-0 rounded-full border border-rose-300/25 px-3 py-1.5 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-rose-100 transition hover:bg-rose-300/15"
+                      (click)="eliminar(i)">
                       Eliminar
                     </button>
                   </td>
@@ -278,4 +258,4 @@
       </div>
     </div>
   </div>
-</div>
+</section>

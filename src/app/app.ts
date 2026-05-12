@@ -7,8 +7,7 @@ import { Footer } from './components/layout/footer/footer';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet, Navbar, Footer],
-  templateUrl: './app.html',
-  styleUrl: './app.css'
+  templateUrl: './app.html'
 })
 export class App {
   protected readonly title = signal('practica-angular');

@@ -6,8 +6,7 @@ import { Carta } from '../../../models/carta';
   selector: 'app-punto3',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './punto3.html',
-  styleUrl: './punto3.css'
+  templateUrl: './punto3.html'
 })
 export class Punto3 {
   constructor(private cdr: ChangeDetectorRef) {}

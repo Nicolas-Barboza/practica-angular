@@ -4,8 +4,7 @@ import { EventoService } from '../../../services/evento';
 
 @Component({
   selector: 'app-punto1',
-  templateUrl: './punto1.html',
-  styleUrl: './punto1.css'
+  templateUrl: './punto1.html'
 })
 export class Punto1 {
 

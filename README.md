@@ -80,7 +80,7 @@ http://localhost:4200
 
 ## Capturas del proyecto
 
-![Preview mobile de AngularLab](public/img/preview-pages-mobile.png)
+![Preview mobile de AngularLab](public/img/preview-pages.png)
 
 ## Notas
 
